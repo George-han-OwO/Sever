@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仪表盘</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>仪表盘</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">主页</a></li>
+                    <li><a href="{{ url_for('logout') }}">登出</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h2>库存</h2>
+            <ul>
+                <li>物品 A - 10 个</li>
+                <li>物品 B - 5 个</li>
+                <li>物品 C - 20 个</li>
+            </ul>
+            <h2>交易行</h2>
+            <form method="POST" action="{{ url_for('sell_item') }}">
+                <div class="input-group">
+                    <label for="item">物品</label>
+                    <select id="item" name="item" required>
+                        <option value="item_a">物品 A</option>
+                        <option value="item_b">物品 B</option>
+                        <option value="item_c">物品 C</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="quantity">数量</label>
+                    <input type="number" id="quantity" name="quantity" min="1" required>
+                </div>
+                <button type="submit">出售</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 我的世界开箱模拟器</p>
+    </footer>
+</body>
+</html>

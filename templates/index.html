@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>欢迎来到我的世界开箱模拟器</h1>
+            {% if current_user.is_authenticated %}
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('dashboard') }}">仪表盘</a></li>
+                        <li><a href="{{ url_for('logout') }}">登出</a></li>
+                    </ul>
+                </nav>
+            {% else %}
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('login') }}">登录</a></li>
+                        <li><a href="{{ url_for('register') }}">注册</a></li>
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h2>每日签到</h2>
+            <p>签到可获得 100 绿宝石。</p>
+            <button>签到</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 我的世界开箱模拟器</p>
+    </footer>
+</body>
+</html>
